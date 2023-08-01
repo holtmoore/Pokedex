@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= pokemon.name %> Details</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><%= pokemon.name %> Details</h1>
+        <img src="<%= pokemon.img %>" alt="<%= pokemon.name %>">
+        <ul>
+            <li>Type: <%= pokemon.type.join(', ') %></li>
+            <li>HP: <%= pokemon.stats.hp %></li>
+            <li>Attack: <%= pokemon.stats.attack %></li>
+            <li>Defense: <%= pokemon.stats.defense %></li>
+        </ul>
+        <a href="/pokemon">Back to Pokémon List</a>
+    </body>
+    </html>
