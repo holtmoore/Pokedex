@@ -3,22 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add New Pokémon</title>
-        <link rel="stylesheet" href="/style.css">
-      </head>
-      
-      <body>
-        <h1>Add New Pokémon</h1>
-        <form action="/pokemon" method="post">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-         
-          <button type="submit">Submit</button>
-        </form>
-      </body>
-      
-      </html>
+    <title>Add New Pokémon</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Add New Pokémon</h1>
+    <form action="/pokemon" method="POST" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="Grass">Grass</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            
+        </select>
+
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="img" accept=".png, .jpg, .jpeg" required>
+
+        
+        <label for="hp">HP:</label>
+        <input type="number" id="hp" name="hp" required>
+
+        <label for="attack">Attack:</label>
+        <input type="number" id="attack" name="attack" required>
+
+        <label for="defense">Defense:</label>
+        <input type="number" id="defense" name="defense" required>
+
+        <label for="spattack">Special Attack:</label>
+        <input type="number" id="spattack" name="spattack" required>
+
+        <label for="spdefense">Special Defense:</label>
+        <input type="number" id="spdefense" name="spdefense" required>
+
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" required>
+
+        <button type="submit">Add Pokémon</button>
+    </form>
+</body>
+</html>

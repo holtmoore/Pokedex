@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pokémon</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Edit pokemon</h1>
+    <h2><%= pokemon.name %></h2>
+    <img src="<%= pokemon.img %>" alt="<%= pokemon.name %>">
+    <form action="/pokemon/<%= pokemon.id %>" method="POST" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= pokemon.name %>" required>
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="Grass" <%= (pokemon.type === "Grass") ? "selected" : "" %>>Grass</option>
+            <option value="Fire" <%= (pokemon.type === "Fire") ? "selected" : "" %>>Fire</option>
+            <option value="Water" <%= (pokemon.type === "Water") ? "selected" : "" %>>Water</option>
+            <!-- Add other types as needed -->
+        </select>
+
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="img" accept=".png, .jpg, .jpeg">
+
+        <!-- Edit input fields for the stats -->
+        <label for="hp">HP:</label>
+        <input type="number" id="hp" name="hp" value="<%= pokemon.stats.hp %>" required>
+
+        <label for="attack">Attack:</label>
+        <input type="number" id="attack" name="attack" value="<%= pokemon.stats.attack %>" required>
+
+        <label for="defense">Defense:</label>
+        <input type="number" id="defense" name="defense" value="<%= pokemon.stats.defense %>" required>
+
+        <label for="spattack">Special Attack:</label>
+        <input type="number" id="spattack" name="spattack" value="<%= pokemon.stats.spattack %>" required>
+
+        <label for="spdefense">Special Defense:</label>
+        <input type="number" id="spdefense" name="spdefense" value="<%= pokemon.stats.spdefense %>" required>
+
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" value="<%= pokemon.stats.speed %>" required>
+
+        <button type="submit">Save Changes</button>
+    </form>
+    <!-- Add the "Edit" button -->
+    <form action="/pokemon/<%= pokemon.id %>/edit" method="GET">
+        <button type="submit" class="edit-button">Edit</button>
+      </form>
+      
+    <!-- Add the "Delete" button -->
+    <form action="/pokemon/<%= pokemon.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="delete-button">Delete</button>
+    </form>
+
+     <!-- Add the "Back to Pokédex" button -->
+     <form action="/pokemon" method="GET">
+        <button type="submit" class="back-to-pokedex">Back to Pokédex</button>
+    </form>
+</body>
+</html>

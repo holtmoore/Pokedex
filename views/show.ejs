@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= pokemon.name %> Details</title>
-        <link rel="stylesheet" href="/styles.css">
-    </head>
-    <body>
-        <h1><%= pokemon.name %> Details</h1>
-        <img src="<%= pokemon.img %>" alt="<%= pokemon.name %>">
-        <ul>
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1><%= pokemon.name %></h1>
+    <img src="<%= pokemon.img %>" alt="<%= pokemon.name %>">
+    <ul>
+        <% if (Array.isArray(pokemon.type)) { %>
             <li>Type: <%= pokemon.type.join(', ') %></li>
-            <li>HP: <%= pokemon.stats.hp %></li>
-            <li>Attack: <%= pokemon.stats.attack %></li>
-            <li>Defense: <%= pokemon.stats.defense %></li>
-        </ul>
-        <a href="/pokemon">Back to Pokémon List</a>
-    </body>
-    </html>
+        <% } else { %>
+            <li>Type: <%= pokemon.type %></li>
+        <% } %>
+        <li>HP: <%= pokemon.stats.hp %></li>
+        <li>Attack: <%= pokemon.stats.attack %></li>
+        <li>Defense: <%= pokemon.stats.defense %></li>
+        <li>Special Attack: <%= pokemon.stats.spattack %></li>
+        <li>Special Defense: <%= pokemon.stats.spdefense %></li>
+        <li>Speed: <%= pokemon.stats.speed %></li>
+    </ul>
+    <form action="/pokemon/<%= pokemon.id %>/edit" method="GET">
+        <button type="submit" class="edit-button">Edit</button>
+      </form>
+      
+      <!-- Delete button -->
+      <form action="/pokemon/<%= pokemon.id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+
+     <!-- Back to Pokédex button -->
+     <form action="/pokemon" method="GET">
+        <button type="submit" class="back-to-pokedex">Back to Pokédex</button>
+    </form>
+
+</body>
+</html>
